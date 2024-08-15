@@ -384,6 +384,9 @@ Blockly.Css.CONTENT = [
   '.blocklyPath {',
     'stroke-width: 1px;',
   '}',
+  '.BlocklyInherited {',
+    'opacity: 0.5',
+  '}',
 
   '.blocklySelected>.blocklyPath {',
     // 'stroke: #fc3;',

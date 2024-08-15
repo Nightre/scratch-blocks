@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /**
  * @license
  * Visual Blocks Editor
@@ -433,7 +434,9 @@ Blockly.Connection.prototype.canConnectToPrevious_ = function(candidate) {
  * @return {boolean} True if the connection is allowed, false otherwise.
  */
 Blockly.Connection.prototype.isConnectionAllowed = function(candidate) {
-
+  if (candidate.sourceBlock_.disabled) {
+    return false;
+  }
   // Don't consider insertion markers.
   if (candidate.sourceBlock_.isInsertionMarker()) {
     return false;

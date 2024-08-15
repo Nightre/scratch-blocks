@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /**
  * @license
  * Visual Blocks Editor
@@ -663,8 +664,15 @@ Blockly.Xml.domToBlockHeadless_ = function(xmlBlock, workspace) {
   goog.asserts.assert(
       prototypeName, 'Block type unspecified: %s', xmlBlock.outerHTML);
   var id = xmlBlock.getAttribute('id');
-  block = workspace.newBlock(prototypeName, id);
-
+  var inherited = xmlBlock.getAttribute('inherited');
+  xmlBlock.removeAttribute('inherited');
+  block = workspace.newBlock(prototypeName, id, inherited);
+  // if (inherited) {
+  //   block.setDisabled(true);
+  //   block.setMovable(false);
+  //   block.setDeletable(false);
+  //   block.setEditable(false);
+  // }
   var blockChild = null;
   for (var i = 0, xmlChild; xmlChild = xmlBlock.childNodes[i]; i++) {
     if (xmlChild.nodeType == 3) {

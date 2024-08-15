@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /**
  * @license
  * Visual Blocks Editor
@@ -53,10 +54,11 @@ goog.require('goog.math.Coordinate');
  * @param {string=} opt_id Optional ID.  Use this ID if provided, otherwise
  *     create a new ID.  If the ID conflicts with an in-use ID, a new one will
  *     be generated.
+ * @param {string=} inherited asda
  * @extends {Blockly.Block}
  * @constructor
  */
-Blockly.BlockSvg = function(workspace, prototypeName, opt_id) {
+Blockly.BlockSvg = function(workspace, prototypeName, opt_id, inherited) {
   // Create core elements for the block.
   /**
    * @type {SVGElement}
@@ -65,7 +67,7 @@ Blockly.BlockSvg = function(workspace, prototypeName, opt_id) {
   this.svgGroup_ = Blockly.utils.createSvgElement('g', {}, null);
   /** @type {SVGElement} */
   this.svgPath_ = Blockly.utils.createSvgElement('path',
-      {'class': 'blocklyPath blocklyBlockBackground'},
+      {'class': 'blocklyPath blocklyBlockBackground' + (inherited ? " BlocklyInherited" : "")},
       this.svgGroup_);
   this.svgPath_.tooltip = this;
 
@@ -82,7 +84,7 @@ Blockly.BlockSvg = function(workspace, prototypeName, opt_id) {
 
   Blockly.Tooltip.bindMouseEvents(this.svgPath_);
   Blockly.BlockSvg.superClass_.constructor.call(this,
-      workspace, prototypeName, opt_id);
+      workspace, prototypeName, opt_id, inherited);
 
   // Expose this block's ID on its top-level SVG group.
   if (this.svgGroup_.dataset) {
