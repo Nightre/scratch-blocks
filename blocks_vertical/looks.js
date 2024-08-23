@@ -21,7 +21,6 @@
 'use strict';
 
 goog.provide('Blockly.Blocks.looks');
-
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Colours');
 goog.require('Blockly.constants');

@@ -1057,7 +1057,7 @@ Blockly.WorkspaceSvg.prototype.glowBlock = function (id, isGlowingBlock) {
   if (id) {
     block = this.getBlockById(id);
     if (!block) {
-      return //throw 'Tried to glow block that does not exist.';
+      throw 'Tried to glow block that does not exist.';
     }
   }
   block.setGlowBlock(isGlowingBlock);
